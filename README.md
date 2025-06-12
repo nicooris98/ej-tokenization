@@ -19,3 +19,9 @@ Reduce las palabras a su forma canónica (lema), teniendo en cuenta la gramátic
 * Ejemplo:
     * "running", "ran" → "run"
     * "better" → "good" (más preciso que un stemmer)
+
+# Dependencias
+```bash
+pip install -r requirements.txt
+python -m spacy download es_core_news_sm
+```
