@@ -66,9 +66,12 @@ print(f"stemming: {metrics.accuracy_score(y_test, y_pred)}")
 # Ej: corriendo, correr, corria = correr
 nlp = spacy.load("es_core_news_sm")
 
+# Cargar stopwords desde NLTK
+stopwords_nltk = set(stopwords.words('spanish'))
+
 def lemmatize_text(text):
     doc = nlp(text.lower())
-    lemmas = [token.lemma_ for token in doc if token.is_alpha]
+    lemmas = [token.lemma_ for token in doc if token.is_alpha and token.lemma_ not in stopwords_nltk]
     return " ".join(lemmas)
 
 df["news_lemma"] = df["news"].apply(lemmatize_text)
